@@ -10,6 +10,8 @@ from settings import PROJECT_ROOT, PROJECT_DIRNAME
 os.chdir(PROJECT_ROOT)
 sys.path.insert(0, os.path.abspath(os.path.join(PROJECT_ROOT, "..")))
 
+activate_this = os.path.join(PROJECT_ROOT, '../venv/bin/activate_this.py')
+execfile(activate_this, dict(__file__=activate_this))
 
 # Add the site ID CLI arg to the environment, which allows for the site
 # used in any site related queries to be manually set for management
