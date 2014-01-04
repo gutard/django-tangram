@@ -105,7 +105,7 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "fr"
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
@@ -119,7 +119,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+USE_I18N = True
 
 # Make these unique, and don't share it with anybody.
 SECRET_KEY = "36a27a7e-a0a1-4ab1-876e-ebff79df73564f0a34b2-f1d8-4087-9510-b61b0b6a17bcc7205300-ea20-4c47-a617-02dfb8a5fe02"
@@ -241,8 +241,9 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    #"mezzanine.accounts",
+    "mezzanine.accounts",
     #"mezzanine.mobile",
+    "tangram",
 )
 
 # List of processors used by RequestContext to populate the context.
