@@ -1,0 +1,185 @@
+[
+{
+    "pk": 2, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "gutard", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": true, 
+        "is_staff": true, 
+        "last_login": "2014-01-04T17:16:18.999Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$10000$HGntM789h5Ka$BXeOTaro+ONRjswnxCqcw9XFSmk7hn57qDLmvCoYQiE=", 
+        "email": "gael.utard@midipy.eedf.fr", 
+        "date_joined": "2014-01-04T17:14:57.270Z"
+    }
+},
+{
+    "pk": 1, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": null, 
+        "_order": 1, 
+        "titles": "Blog", 
+        "description": "Blog", 
+        "parent": null, 
+        "title": "Blog", 
+        "short_url": null, 
+        "created": null, 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": null, 
+        "expiry_date": null, 
+        "publish_date": null, 
+        "content_model": "richtextpage", 
+        "in_menus": "1,2,3", 
+        "slug": "blog", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 2, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": "2014-01-04T17:39:36.061Z", 
+        "_order": 1, 
+        "titles": "Accueil", 
+        "description": "Accueil", 
+        "parent": null, 
+        "title": "Accueil", 
+        "short_url": null, 
+        "created": "2014-01-04T17:39:36.061Z", 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-01-04T17:39:36.058Z", 
+        "content_model": "richtextpage", 
+        "in_menus": "", 
+        "slug": "/", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 3, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": "2014-01-04T17:47:46.266Z", 
+        "_order": 2, 
+        "titles": "Respos", 
+        "description": "Respos", 
+        "parent": null, 
+        "title": "Respos", 
+        "short_url": null, 
+        "created": "2014-01-04T17:47:46.266Z", 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-01-04T17:47:46.262Z", 
+        "content_model": "richtextpage", 
+        "in_menus": "1,2,3", 
+        "slug": "respos", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 4, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": false, 
+        "updated": "2014-01-04T17:49:27.881Z", 
+        "_order": 0, 
+        "titles": "Respos / Inscription", 
+        "description": "Inscription", 
+        "parent": 3, 
+        "title": "Inscription", 
+        "short_url": null, 
+        "created": "2014-01-04T17:48:49.627Z", 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-01-04T17:48:49Z", 
+        "content_model": "richtextpage", 
+        "in_menus": "1,2,3", 
+        "slug": "respos/inscription", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 5, 
+    "model": "pages.page", 
+    "fields": {
+        "status": 2, 
+        "login_required": true, 
+        "updated": "2014-01-04T18:02:37.138Z", 
+        "_order": 3, 
+        "titles": "FichGRAMs", 
+        "description": "", 
+        "parent": null, 
+        "title": "FichGRAMs", 
+        "short_url": null, 
+        "created": "2014-01-04T17:50:43.651Z", 
+        "site": 1, 
+        "in_sitemap": true, 
+        "keywords_string": "", 
+        "_meta_title": "", 
+        "expiry_date": null, 
+        "publish_date": "2014-01-04T17:50:43Z", 
+        "content_model": "richtextpage", 
+        "in_menus": "1,2,3", 
+        "slug": "fichgrams", 
+        "gen_description": true
+    }
+},
+{
+    "pk": 2, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<p>Accueil</p>"
+    }
+},
+{
+    "pk": 1, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<p>Blog</p>"
+    }
+},
+{
+    "pk": 5, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<ol>\n<li><a href=\"/fichgrams/1/\">Choix</a></li>\n<li><a href=\"/fichgrams/2/\">\u00c9lection</a></li>\n<li><a href=\"/fichgrams/3/\">Restitution</a></li>\n<li><a href=\"/fichgrams/4/\">Pr\u00e9paration</a></li>\n<li><a href=\"/fichgrams/5/\">R\u00e9alisation</a></li>\n<li><a href=\"/fichgrams/6/\">Bilan</a></li>\n<li><a href=\"/fichgrams/7/\">Retransmission</a></li>\n</ol>"
+    }
+},
+{
+    "pk": 3, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<p>Respos</p>"
+    }
+},
+{
+    "pk": 4, 
+    "model": "pages.richtextpage", 
+    "fields": {
+        "content": "<p>Inscription</p>"
+    }
+}
+]

@@ -14,6 +14,7 @@ admin.autodiscover()
 urlpatterns = patterns("",
 
     ("^respos/inscription/", include("tangram.urls")),
+    ("^fichgrams/", include("tangram.fichgrams_urls")),
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
@@ -29,7 +30,7 @@ urlpatterns = patterns("",
     # one homepage pattern, so if you use a different one, comment this
     # one out.
 
-    url("^$", direct_to_template, {"template": "index.html"}, name="home"),
+    #url("^$", direct_to_template, {"template": "index.html"}, name="home"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
@@ -44,7 +45,7 @@ urlpatterns = patterns("",
     # "/.html" - so for this case, the template "pages/index.html"
     # should be used if you want to customize the homepage's template.
 
-    # url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+    url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
 
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------

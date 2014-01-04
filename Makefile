@@ -6,3 +6,7 @@ install:
 
 freeze:
 	$(VENV)/bin/pip freeze > requirements.txt
+
+resetdb:
+	rm -f project/dev.db
+	$(VENV)/bin/python project/manage.py syncdb --noinput

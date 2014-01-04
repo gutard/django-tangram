@@ -1,10 +1,10 @@
-from django.shortcuts import render
-from django.views.generic import FormView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import FormView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 from .models import Unite
-from .forms import PreinscriptionForm
+from .forms import PreinscriptionForm, FichgramForms
 
 
 class LoginRequiredMixin(object):
@@ -34,3 +34,18 @@ class InscriptionView(LoginRequiredMixin, FormView):
         return super(InscriptionView, self).form_valid(form)
 
 inscription = InscriptionView.as_view()
+
+
+class FichegramView(LoginRequiredMixin, UpdateView):
+    template_name = 'tangram/fichgram.html'
+    success_url = '/fichgrams/'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Unite, user=self.request.user)
+
+    def get_form_class(self):
+        numero = int(self.kwargs.get('numero'))
+        return(FichgramForms[numero - 1])
+
+
+fichgram = FichegramView.as_view()
