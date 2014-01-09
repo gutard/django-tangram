@@ -10,3 +10,6 @@ freeze:
 resetdb:
 	rm -f project/dev.db
 	$(VENV)/bin/python project/manage.py syncdb --noinput
+
+static:
+	$(VENV)/bin/python project/manage.py collectstatic --noinput
