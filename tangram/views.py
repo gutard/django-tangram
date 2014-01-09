@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import FormView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -39,6 +39,11 @@ inscription = InscriptionView.as_view()
 class FichegramView(LoginRequiredMixin, UpdateView):
     template_name = 'tangram/fichgram.html'
     success_url = '/fichgrams/'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not Unite.objects.filter(user=request.user).exists():
+            return redirect('/respos/inscription/')
+        return super(FichegramView, self).dispatch(request, *args, **kwargs)
 
     def get_object(self, queryset=None):
         return get_object_or_404(Unite, user=self.request.user)
