@@ -358,3 +358,26 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+FILEBROWSER_EXTENSIONS = {
+    'Folder': [''],
+    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
+    'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
+    'Document': ['.pdf', '.doc', '.rtf', '.txt', '.xls', '.csv'],
+    'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p'],
+    'Code': ['.html', '.py', '.js', '.css'],
+    'Archive': ['.zip'],
+}
+
+FILEBROWSER_SELECT_FORMATS = {
+    'File': ['Folder', 'Document', 'Archive'],
+    'Image': ['Image'],
+    'Media': ['Video', 'Audio'],
+    'Document': ['Document'],
+    # for TinyMCE we can also define lower-case items
+    'image': ['Image'],
+    'file': ['Folder', 'Image', 'Document', 'Archive'],
+    'media': ['Video', 'Audio'],
+}
+
+FILEBROWSER_MAX_UPLOAD_SIZE = 25 * 1024 * 1024
