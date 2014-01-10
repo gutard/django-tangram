@@ -4,11 +4,13 @@ Pillow==2.1.0
 argparse==1.2.1
 bleach==1.2.2
 distribute==0.6.34
+django-auth-ldap==1.1.7
 filebrowser-safe==0.2.31
 grappelli-safe==0.2.23
 gunicorn==18.0
 html5lib==0.95
 oauthlib==0.6.0
+python-ldap==2.4.13
 pytz==2013.8
 requests==1.2.3
 requests-oauthlib==0.3.3

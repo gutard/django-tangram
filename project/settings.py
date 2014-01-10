@@ -232,6 +232,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
+    "django_auth_ldap",
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",
@@ -381,3 +382,18 @@ FILEBROWSER_SELECT_FORMATS = {
 }
 
 FILEBROWSER_MAX_UPLOAD_SIZE = 25 * 1024 * 1024
+
+AUTHENTICATION_BACKENDS = (
+    'django_auth_ldap.backend.LDAPBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+import ldap
+from django_auth_ldap.config import LDAPSearch
+
+AUTH_LDAP_SERVER_URI = "ldap://localhost"
+AUTH_LDAP_BIND_DN = "uid=galilee,dc=midipy,dc=eedf,dc=fr"
+AUTH_LDAP_BIND_PASSWORD = "ldapcestputainderelou"
+AUTH_LDAP_USER_SEARCH = LDAPSearch("ou=people,dc=midipy,dc=eedf,dc=fr",
+    ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+
