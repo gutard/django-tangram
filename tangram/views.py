@@ -36,10 +36,11 @@ class InscriptionView(LoginRequiredMixin, FormView):
 inscription = InscriptionView.as_view()
 
 
-class FichegramView(LoginRequiredMixin, UpdateView):
+class FichegramView(UpdateView):
     template_name = 'tangram/fichgram.html'
     success_url = '/fichgrams/'
 
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         if not Unite.objects.filter(user=request.user).exists():
             return redirect('/respos/inscription/')
