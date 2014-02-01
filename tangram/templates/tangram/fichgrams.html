@@ -3,10 +3,6 @@
 
 {% block main %}
 
-{% editable page.richtextpage.content %}
-    {{ page.richtextpage.content|richtext_filters|safe }}
-{% endeditable %}
-
 {% if not request.user.is_authenticated %}
     <p>Il faut d'abord te <a href="{% url "login" %}?next={{ request.path }}">connecter</a> avant de pouvoir remplir tes FichGRAMs.</p>
 {% endif %}
@@ -16,6 +12,9 @@
 {% endif %}
 
 {% if request.user.is_authenticated and unite %}
+    {% editable page.richtextpage.content %}
+        {{ page.richtextpage.content|richtext_filters|safe }}
+    {% endeditable %}
     <ol>
         <li><a href="/fichgrams/1/">Choix</a>{% if unite.fg1_ok %} (gram attribué){% endif %}</li>
         <li><a href="/fichgrams/2/">&Eacute;lection</a>{% if unite.fg2_ok %} (gram attribué){% endif %}</li>
