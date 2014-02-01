@@ -1,5 +1,8 @@
 VENV=venv
 
+run:
+	(cd project; ../$(VENV)/bin/python manage.py runserver)
+
 install:
 	virtualenv $(VENV)
 	$(VENV)/bin/pip install -r requirements.txt --no-deps

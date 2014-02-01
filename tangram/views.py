@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import FormView, UpdateView
+from django.views.generic import FormView, UpdateView, TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
@@ -31,6 +31,9 @@ class InscriptionView(LoginRequiredMixin, FormView):
         if not form.instance.pk:
             unite.user = self.request.user
         unite.save()
+        url = self.request.GET.get('next')
+        if url:
+            return redirect(url)
         return super(InscriptionView, self).form_valid(form)
 
 inscription = InscriptionView.as_view()
@@ -55,3 +58,14 @@ class FichegramView(UpdateView):
 
 
 fichgram = FichegramView.as_view()
+
+
+class FichegramsView(TemplateView):
+    template_name = 'tangram/fichgrams.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FichegramsView, self).get_context_data(**kwargs)
+        context['inscrit'] = Unite.objects.filter(user=self.request.user).exists()
+        return context
+
+fichgrams = FichegramsView.as_view()
