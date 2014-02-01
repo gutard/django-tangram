@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load mezzanine_tags %}
+
+{% block main %}
+
+{% editable page.richtextpage.content %}
+    {{ page.richtextpage.content|richtext_filters|safe }}
+{% endeditable %}
+
+<ul>
+{% for unite in unites %}
+    <li>{{ unite.nom }} ({{ unite.get_branche_display }})&nbsp;: {{ unite.nb_grams }} gram{{ unite.nb_grams|pluralize }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

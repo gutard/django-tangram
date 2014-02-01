@@ -3,18 +3,28 @@
 
 {% block main %}
 
+{% editable page.richtextpage.content %}
+    {{ page.richtextpage.content|richtext_filters|safe }}
+{% endeditable %}
+
 {% if not request.user.is_authenticated %}
     <p>Il faut d'abord te <a href="{% url "login" %}?next={{ request.path }}">connecter</a> avant de pouvoir remplir tes FichGRAMs.</p>
 {% endif %}
 
-{% if not inscrit %}
+{% if not unite %}
     <p>Il faut d'abord t'<a href="/respos/inscription/?next={{ request.path }}">inscrire</a> avant de pouvoir remplir tes FichGRAMs.</p>
 {% endif %}
 
-{% if request.user.is_authenticated and inscrit %}
-    {% editable page.richtextpage.content %}
-        {{ page.richtextpage.content|richtext_filters|safe }}
-    {% endeditable %}
+{% if request.user.is_authenticated and unite %}
+    <ol>
+        <li><a href="/fichgrams/1/">Choix</a>{% if unite.fg1_ok %} (gram attribué){% endif %}</li>
+        <li><a href="/fichgrams/2/">&Eacute;lection</a>{% if unite.fg2_ok %} (gram attribué){% endif %}</li>
+        <li><a href="/fichgrams/3/">Restitution</a>{% if unite.fg3_ok %} (gram attribué){% endif %}</li>
+        <li><a href="/fichgrams/4/">Pr&eacute;paration</a>{% if unite.fg4_ok %} (gram attribué){% endif %}</li>
+        <li><a href="/fichgrams/5/">R&eacute;alisation</a>{% if unite.fg5_ok %} (gram attribué){% endif %}</li>
+        <li><a href="/fichgrams/6/">Bilan</a>{% if unite.fg6_ok %} (gram attribué){% endif %}</li>
+        <li><a href="/fichgrams/7/">Retransmission</a>{% if unite.fg7_ok %} (gram attribué){% endif %}</li>
+    </ol>
 {% endif %}
 
 {% endblock %}

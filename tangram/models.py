@@ -71,3 +71,8 @@ class Unite(models.Model):
     fg5_ok = models.BooleanField(u"Gram attribué")
     fg6_ok = models.BooleanField(u"Gram attribué")
     fg7_ok = models.BooleanField(u"Gram attribué")
+    nb_grams = models.IntegerField(u"nombre de grams", default=0)
+    
+    def save(self, *args, **kwargs):
+        self.nb_grams = sum([int(getattr(self, 'fg%u_ok' % i)) for i in range(1, 8)])
+        super(Unite, self).save(*args, **kwargs)

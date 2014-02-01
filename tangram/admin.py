@@ -4,7 +4,7 @@ from .models import Unite
 
 
 class UniteAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'branche', 'theme_explogram', 'effectif')
+    list_display = ('nom', 'branche', 'theme_explogram', 'effectif', 'nb_grams')
     fieldsets = (
         (None, {
             #'classes': ('collapse',),

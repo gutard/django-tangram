@@ -13,8 +13,7 @@ admin.autodiscover()
 
 urlpatterns = patterns("",
 
-    ("^respos/inscription/", include("tangram.urls")),
-    ("^fichgrams/", include("tangram.fichgrams_urls")),
+    ("^", include("tangram.urls")),
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.

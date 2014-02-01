@@ -65,7 +65,22 @@ class FichegramsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(FichegramsView, self).get_context_data(**kwargs)
-        context['inscrit'] = Unite.objects.filter(user=self.request.user).exists()
+        try:
+            context['unite'] = Unite.objects.get(user=self.request.user)
+        except:
+            context['unite'] = None
         return context
 
 fichgrams = FichegramsView.as_view()
+
+
+class GramsView(TemplateView):
+    template_name = 'tangram/grams.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GramsView, self).get_context_data(**kwargs)
+        unites = Unite.objects.order_by('-nb_grams', 'branche', 'nom')
+        context['unites'] = unites
+        return context
+
+grams = GramsView.as_view()
