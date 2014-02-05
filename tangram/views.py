@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import FormView, UpdateView, TemplateView
+from django.views.generic import FormView, UpdateView, TemplateView, ListView, CreateView, DetailView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.core.urlresolvers import reverse_lazy
 
-from .models import Unite
-from .forms import PreinscriptionForm, FichgramForms
+from .models import Unite, FicheAction
+from .forms import PreinscriptionForm, FichgramForms, FicheActionForm
 
 
 class LoginRequiredMixin(object):
@@ -56,7 +57,6 @@ class FichegramView(UpdateView):
         numero = int(self.kwargs.get('numero'))
         return(FichgramForms[numero - 1])
 
-
 fichgram = FichegramView.as_view()
 
 
@@ -84,3 +84,39 @@ class GramsView(TemplateView):
         return context
 
 grams = GramsView.as_view()
+
+
+class FicheListView(ListView):
+    model = FicheAction
+
+fiches = FicheListView.as_view()
+
+
+class FicheDetailView(DetailView):
+    model = FicheAction
+
+fiche = FicheDetailView.as_view()
+
+
+class FicheFormMixin(object):
+    model = FicheAction
+    form_class = FicheActionForm
+    success_url = reverse_lazy('fiches')
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return redirect(self.get_success_url())
+
+
+class CreateFicheView(FicheFormMixin, CreateView):
+    pass
+
+ajouter_fiche = CreateFicheView.as_view()
+
+
+class UpdateFicheView(FicheFormMixin, UpdateView):
+    pass
+
+modifier_fiche = UpdateFicheView.as_view()

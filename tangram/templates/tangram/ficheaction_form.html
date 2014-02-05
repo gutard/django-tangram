@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+{% if request.user.is_authenticated %}
+
+    <form method="POST" action="#">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enregister</button>
+    </form>
+
+{% else %}
+
+    <p>Il faut d'abord te <a href="{% url "login" %}?next={{ request.path }}">connecter</a> avant de pouvoir remplir une fiche action.</p>
+
+{% endif %}
+
+{% endblock %}

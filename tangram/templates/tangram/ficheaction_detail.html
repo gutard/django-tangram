@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load mezzanine_tags %}
+
+{% block main %}
+
+<h4>{{ ficheaction.titre }}</h4>
+{% if ficheaction.par %}<p><strong>Action réalisée par</strong></strong> : <br>{{ ficheaction.par }}</p>{% endif %}
+{% if ficheaction.public %}<p><strong>Description public (âge, autonomie, effectif…)</strong> : <br>{{ ficheaction.public }}</p>{% endif %}
+{% if ficheaction.deroule %}<p><strong>Descriptif du déroulé</strong> : <br>{{ ficheaction.deroule }}</p>{% endif %}
+{% if ficheaction.activite %}<p><strong>Type d'activité (grand jeux, forum, projet de longue durée…)</strong> : <br>{{ ficheaction.activite }}</p>{% endif %}
+{% if ficheaction.objectifs %}<p><strong>Objectifs</strong> : <br>{{ ficheaction.objectifs }}</p>{% endif %}
+{% if ficheaction.place %}<p><strong>Place dans une démarche d'année (lancement, construction, conclusion…)</strong> : <br>{{ ficheaction.place }}</p>{% endif %}
+{% if ficheaction.duree %}<p><strong>Durée</strong> : <br>{{ ficheaction.duree }}</p>{% endif %}
+{% if ficheaction.lancement %}<p><strong>Place dans les respos dans le lancement</strong> : <br>{{ ficheaction.lancement }}</p>{% endif %}
+{% if ficheaction.realisation %}<p><strong>Place dans les respos dans la réalisation</strong> : <br>{{ ficheaction.realisation }}</p>{% endif %}
+{% if ficheaction.valorisation %}<p><strong>Place dans les respos dans la valorisation</strong> : <br>{{ ficheaction.valorisation }}</p>{% endif %}
+{% if ficheaction.biblio %}<p><strong>Bibliographie</strong> : <br>{{ ficheaction.biblio }}</p>{% endif %}
+{% if ficheaction.partenaires %}<p><strong>Les partenaires (si c'est le cas)</strong> : <br>{{ ficheaction.partenaires }}</p>{% endif %}
+{% if ficheaction.matos %}<p><strong>Besoins matériels</strong> : <br>{{ ficheaction.matos }}</p>{% endif %}
+{% if ficheaction.annexe %}<p><strong>Annexes jointes</strong> : <br>{{ ficheaction.annexe }}</p>{% endif %}
+
+{% if ficheaction.user == request.user %}
+    <a href="{% url 'modifier_fiche' ficheaction.pk %}" class="btn btn-default">Modifier</a>
+{% endif %}
+
+{% endblock %}

@@ -16,3 +16,6 @@ resetdb:
 
 static:
 	$(VENV)/bin/python project/manage.py collectstatic --noinput
+
+msg:
+	(cd project; ../$(VENV)/bin/python manage.py compilemessages)

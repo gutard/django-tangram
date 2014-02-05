@@ -72,7 +72,29 @@ class Unite(models.Model):
     fg6_ok = models.BooleanField(u"Gram attribué")
     fg7_ok = models.BooleanField(u"Gram attribué")
     nb_grams = models.IntegerField(u"nombre de grams", default=0)
-    
+
     def save(self, *args, **kwargs):
         self.nb_grams = sum([int(getattr(self, 'fg%u_ok' % i)) for i in range(1, 8)])
         super(Unite, self).save(*args, **kwargs)
+
+
+class FicheAction(models.Model):
+    titre = models.CharField(u"Titre", max_length=100)
+    par = models.CharField(u"Action réalisée par", max_length=100, blank=True)
+    public = models.TextField(u"Description public (âge, autonomie, effectif…)", blank=True)
+    deroule = models.TextField(u"Descriptif du déroulé", blank=True)
+    activite = models.CharField(u"Type d'activité (grand jeux, forum, projet de longue durée…)", max_length=100, blank=True)
+    objectifs = models.TextField(u"Objectifs", blank=True)
+    place = models.TextField(u"Place dans une démarche d'année (lancement, construction, conclusion…)", blank=True)
+    duree = models.CharField(u"Durée", max_length=100, blank=True)
+    lancement = models.TextField(u"Place dans les respos dans le lancement", blank=True)
+    realisation = models.TextField(u"Place dans les respos dans la réalisation", blank=True)
+    valorisation = models.TextField(u"Place dans les respos dans la valorisation", blank=True)
+    biblio = models.TextField(u"Bibliographie", blank=True)
+    partenaires = models.TextField(u"Les partenaires (si c'est le cas)", blank=True)
+    matos = models.TextField(u"Besoins matériels", blank=True)
+    annexe = models.FileField(u"Annexes jointes", blank=True, upload_to='fiche_action')
+    user = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return self.titre

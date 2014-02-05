@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load mezzanine_tags %}
+
+{% block main %}
+
+{% editable page.richtextpage.content %}
+    {{ page.richtextpage.content|richtext_filters|safe }}
+{% endeditable %}
+
+<ul>
+{% for fiche in object_list %}
+    <li><a href="{% url 'fiche' fiche.pk %}">{{ fiche }}</a></li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'ajouter_fiche' %}" class="btn btn-default">Ajouter une fiche action</a>
+
+{% endblock %}

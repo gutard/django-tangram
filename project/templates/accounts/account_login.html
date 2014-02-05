@@ -4,12 +4,25 @@
 {% block main %}
 
 {% if request.user.is_authenticated %}
-    <p>{% trans "You're already logged in." %}</p>
+    <p>
+        Tu es déjà connecté(e).
+    </p>
 {% else %}
+    <p>
+        Si tu n'as pas de compte et que tu es adhérent(e) EEDF, tu peux
+        <a href="https://galilee.eedf.fr/adherents/activercompte/?next={{ request.GET.next }}">
+            en créer un
+        </a>
+        dès maintenant.
+    </p>
+    <p>
+        Tu peux aussi
+        <a href="https://galilee.eedf.fr/adherents/motdepasse/">
+            réinitialiser ton mot de passe
+        </a>
+        si tu l'as oublié.
+    </p>
     {{ block.super }}
-    <p>{% blocktrans with next=request.GET.next signup_url="https://galilee.eedf.fr/adherents/activercompte/" %}Si vous n'avez pas de compte et que vous êtes adhérent EEDF, vous pouvez <a href="{{ signup_url }}?next={{ next }}">en créer un</a> dès maintenant.{% endblocktrans %}</p>
-    {% url "profile_update" as profile_update_url %}
-    {% blocktrans with password_reset_url="https://galilee.eedf.fr/adherents/motdepasse/" %}<p>Vous pouvez aussi <a href="{{ password_reset_url }}">réinitialiser votre mot de passe</a> si vous l'avez oublié.</p>{% endblocktrans %}</p>
 {% endif %}
 
 {% endblock %}

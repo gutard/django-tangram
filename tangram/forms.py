@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Unite
+from .models import Unite, FicheAction
 
 
 class PreinscriptionForm(forms.ModelForm):
@@ -65,3 +65,9 @@ FichgramForms = [
     Fichgram6Form,
     Fichgram7Form,
 ]
+
+
+class FicheActionForm(forms.ModelForm):
+    class Meta:
+        model = FicheAction
+        exclude = ('user', )

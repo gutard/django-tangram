@@ -397,3 +397,6 @@ AUTH_LDAP_BIND_PASSWORD = "ldapcestputainderelou"
 AUTH_LDAP_USER_SEARCH = LDAPSearch("ou=people,dc=midipy,dc=eedf,dc=fr",
     ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
 
+LOCALE_PATHS = (
+    os.path.join(PROJECT_ROOT, 'locale'),
+)
